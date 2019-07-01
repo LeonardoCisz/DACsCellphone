@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead"></head>
+	<body>
+	<div class="container">
+	<nav th:replace="layout :: menu">(menu)</nav>
+	<a href="form.html" th:href="@{/musica/novo}"class="btn btn-primary btn-lg" role="button">Nova Musica</a>
+		<table class="table" id="musicas">
+			<thead class="thead-light"> 
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Titulo</th>
+					<th scope="col">Duracao</th>
+					<th scope="col">Boton / Botón</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr scope="row" th:each="ummusica : ${musicas}">
+					<td th:text="${ummusica.nome}"></td>
+					<td th:text="${ummusica.banda}"></td>
+					<td th:text="${#dates.format(ummusica.data, 'mm:ss')}"></td>
+					<td><a th:href="@{'/musica/alterar/' + ${ummusica.id}}"class="btn btn-primary btn-lg">Alterar</a>
+						<a href="#" class='btn btn-danger btn-lg js-delete' th:data-customer-id="${ummusica.id}">Excluir</a></td>
+					
+					
+					
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div th:include="layout :: footer" id="footer">(footer)</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#musicas").on("click",".js-delete",function(){
+					var button = $(this);
+					bootbox.confirm("Confirma a exclusao da musica?",function(result){
+						if(result){
+							$.ajax({
+								url:"/musica/excluir/"+
+								button.attr("data-customer-id"),
+								method: "GET",
+								success: function (){
+									window.location.href = "/musica"
+								}
+							});
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

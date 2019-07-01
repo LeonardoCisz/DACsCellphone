@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:include="layout :: htmlhead"></head>
+	<body>
+		<div class="container">
+			<nav th:replace="layout :: menu">(menu)</nav>
+ 			<div class="border border-dark">
+				<form th:action="@{/musica/(form)}" th:object="${musica}" action="#" method="post">
+					<input type="hidden" id="txtid" th:field="*{id}" />
+				    <div class="form-group">
+				        <label for="txtnome">Nome da música</label>
+				        <input type="text" th:field="*{nome}" class="form-control" id="txtnome" placeholder="Nome">
+				    </div>
+				     <div class="form-group">
+				        <label for="txtnome">Banda</label>
+				        <input type="text" th:field="*{banda}" class="form-control" id="banda" placeholder="Digite a Banda">
+				    </div>
+				     <!--<div class="form-group">
+				        <label for="txtnome">Data</label>
+				        <input type="text" th:field="*{data}" class="form-control" id="txtdata" placeholder="Data">
+				    </div> -->
+				    
+				    
+				    <div class="form-group">
+                        <label for="slcsexo">Duracao</label>
+                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" 
+                                th:field="*{data}"/>
+                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+				    <button type="submit" class="btn btn-primary">Enviar</button>
+				</form>
+			</div>
+		</div>
+		<div th:include="layout :: footer" id="footer">(footer)</div>
+		<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format:"mm:ss"                   
+                });
+            });
+        </script>
+		
+	</body>
+</html>
