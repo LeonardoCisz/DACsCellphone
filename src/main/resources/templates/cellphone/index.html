@@ -4,18 +4,16 @@
 	<body>
 	<div class="container">
 	<nav th:replace="layout :: menu">(menu)</nav>
-	<a href="form.html" th:href="@{/musica/novo}"class="btn btn-primary btn-lg" role="button">Nova Musica</a>
-		<table class="table" id="musicas">
+	<a href="form.html" th:href="@{/cellphone/novo}"class="btn btn-primary btn-lg" role="button">Novo celular</a>
+		<table class="table" id="cellphone">
 			<thead class="thead-light"> 
 				<tr>
-					<th scope="col">Nome</th>
-					<th scope="col">Titulo</th>
-					<th scope="col">Duracao</th>
-					<th scope="col">Boton / Botón</th>
+					<th scope="col">Modelo</th>
+					<th scope="col">Marca</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr scope="row" th:each="ummusica : ${musicas}">
+				<tr scope="row" th:each="ummusica : ${cellphone}">
 					<td th:text="${ummusica.nome}"></td>
 					<td th:text="${ummusica.banda}"></td>
 					<td th:text="${#dates.format(ummusica.data, 'mm:ss')}"></td>
@@ -32,16 +30,16 @@
 		
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$("#musicas").on("click",".js-delete",function(){
+				$("#cellphone").on("click",".js-delete",function(){
 					var button = $(this);
-					bootbox.confirm("Confirma a exclusao da musica?",function(result){
+					bootbox.confirm("Quer mesmo excluir?",function(result){
 						if(result){
 							$.ajax({
-								url:"/musica/excluir/"+
+								url:"/cellphone/excluir/"+
 								button.attr("data-customer-id"),
 								method: "GET",
 								success: function (){
-									window.location.href = "/musica"
+									window.location.href = "/cellphone"
 								}
 							});
 						}
