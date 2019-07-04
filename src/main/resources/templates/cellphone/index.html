@@ -13,15 +13,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr scope="row" th:each="ummusica : ${cellphone}">
-					<td th:text="${ummusica.nome}"></td>
-					<td th:text="${ummusica.banda}"></td>
-					<td th:text="${#dates.format(ummusica.data, 'mm:ss')}"></td>
-					<td><a th:href="@{'/musica/alterar/' + ${ummusica.id}}"class="btn btn-primary btn-lg">Alterar</a>
-						<a href="#" class='btn btn-danger btn-lg js-delete' th:data-customer-id="${ummusica.id}">Excluir</a></td>
-					
-					
-					
+				<tr scope="row" th:each="celular : ${cellphone}">
+					<td th:text="${celular.modelo}"></td>
+					<td th:text="${celular.marca}"></td>
+					<td><a th:href="@{'/cellphone/alterar/' + ${celular.id}}"class="btn btn-primary btn-lg">Alterar</a>
+						<a href="#" class='btn btn-danger btn-lg js-delete' th:data-customer-id="${celular.id}">Excluir</a></td>
 				</tr>
 			</tbody>
 		</table>
