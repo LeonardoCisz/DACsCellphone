@@ -8,6 +8,11 @@
         
     </head>
     <body>
+    <nav>
+    <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sair" class="btn"/>
+                </form>
+		</nav>
         <nav th:fragment="menu" class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Sistema</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +25,11 @@
                   </li>
                 </ul>
             </div>
+            <nav>
+            	<form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sair" class="btn"/>
+                </form>
+			</nav>
         </nav>
          
         <div th:fragment="footer" id="footer">
