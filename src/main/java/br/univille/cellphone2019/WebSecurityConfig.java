@@ -51,14 +51,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		};
 
 		http
+			.csrf().disable()
 		        .authorizeRequests()
 		            .anyRequest().authenticated()
 		            .antMatchers(resources).permitAll()
 		        .and()
 		            .formLogin().loginPage("/login")
 		            .successForwardUrl("/")
-		        .and()
-		            .httpBasic();
+		        .permitAll();
 		}
 	@Bean
 	public PasswordEncoder passwordEncoder() {	
